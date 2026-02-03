@@ -13,10 +13,18 @@ public class PerformanceConfig {
     private final Map<String, Object> parametricYaml;
 
     public PerformanceConfig() {
-        //Yaml yaml = new Yaml();
+        Yaml yaml = new Yaml();
 
-        performanceYaml = loadYaml("scenarioPerf/performance.yaml");
-        parametricYaml = loadYaml("scenarioPerf/parametricConfigurationValues.yaml");
+        //performanceYaml = loadYaml("scenarioPerf/performance.yaml");
+        //parametricYaml  = loadYaml("scenarioPerf/parametricConfigurationValues.yaml");
+
+        this.performanceYaml = loadYaml("scenarioPerf/performance.yaml");
+        this.parametricYaml = loadYaml("scenarioPerf/parametricConfigurationValues.yaml");
+
+        PerformanceYamlValidator.validatePerformanceYaml(
+                performanceYaml,
+                parametricYaml
+        );
     }
 
     private Map<String, Object> loadYaml(String fileName) {
@@ -63,7 +71,39 @@ public class PerformanceConfig {
                 .collect(Collectors.toList());
     }
 
+    @SuppressWarnings("unchecked")
+    private int resolveResponseTime(String level) {
+        Map<String, Object> responseTimes =
+                (Map<String, Object>) parametricYaml.get("response_time");
+
+        Number value = (Number) responseTimes.get(level);
+        return value.intValue();
+    }
+
+    @SuppressWarnings("unchecked")
+    private double resolveErrorRate(String level) {
+        Map<String, Object> errorRates =
+                (Map<String, Object>) parametricYaml.get("error_rate");
+
+        Number value = (Number) errorRates.get(level);
+        return value.doubleValue();
+    }
+
+    @SuppressWarnings("unchecked")
+    private int resolveThroughput(String level) {
+        Map<String, Object> throughput =
+                (Map<String, Object>) parametricYaml.get("throughput");
+    
+        Number value = (Number) throughput.get(level);
+        return value.intValue();
+    }
+
     private FeatureConfig mapToFeatureConfig(Map<String, Object> feature) {
+
+        String responseLevel = feature.get("response_time").toString();
+        String errorRateLevel = feature.get("error_rate").toString();
+        String throughputLevel = feature.get("throughput").toString();
+        
         FeatureConfig config = new FeatureConfig();
 
         config.scenario = feature.get("scenario").toString();
@@ -74,6 +114,10 @@ public class PerformanceConfig {
 
         config.concurrentUsers = resolveConcurrency(concurrencyLevel);
         config.executions = resolveExecutionCount(executionLevel);
+        
+        config.maxResponseTimeMs = resolveResponseTime(responseLevel);
+        config.maxErrorRatePercent = resolveErrorRate(errorRateLevel);
+        config.minThroughputRps = resolveThroughput(throughputLevel);
 
         return config;
     }
@@ -82,14 +126,12 @@ public class PerformanceConfig {
        Parametric resolution
      --------------------------- */
 
-    @SuppressWarnings("unchecked")
     private int resolveConcurrency(String level) {
         Map<String, Integer> concurrency =
                 (Map<String, Integer>) parametricYaml.get("concurrency");
         return concurrency.get(level);
     }
 
-    @SuppressWarnings("unchecked")
     private int resolveExecutionCount(String level) {
         Map<String, Integer> execution =
                 (Map<String, Integer>) parametricYaml.get("execution_time");
@@ -99,12 +141,23 @@ public class PerformanceConfig {
     /* ---------------------------
        FeatureConfig model
      --------------------------- */
-
     public static class FeatureConfig {
+
+        // Identidad
         public String scenario;
         public String featurePath;
+
+        // Carga
         public int concurrentUsers;
         public int executions;
+
+        // SLA / Quality Gates
+        public int maxResponseTimeMs;
+        public double maxErrorRatePercent;
+        public int minThroughputRps;
     }
 
+    public int maxResponseTimeMs;
+    
+    
 }

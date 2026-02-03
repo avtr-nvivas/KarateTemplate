@@ -2,4 +2,5 @@ helpers\DataGenerator.class
 helpers\PerformanceConfig$FeatureConfig.class
 helpers\PerformanceConfig.class
 helpers\DbHandler.class
+helpers\PerformanceYamlValidator.class
 serviceApp\ServiceTest.class

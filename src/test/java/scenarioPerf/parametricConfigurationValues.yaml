@@ -10,3 +10,19 @@ execution_time:
   medium: 4
   high: 6
   very_high: 8
+
+response_time:
+  low: 2000
+  medium: 5000
+  high: 8000
+  very_high: 15000
+
+error_rate:
+  low: 1
+  medium: 3
+  high: 5
+
+throughput:
+  low: 1
+  medium: 5
+  high: 10

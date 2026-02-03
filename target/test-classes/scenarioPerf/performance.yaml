@@ -7,21 +7,33 @@ features:
     enabled: true
     concurrency: low
     execution_time: low
+    response_time: medium
+    error_rate: low
+    throughput: medium
 
   - scenario: Create-new-and-delete
     feature: classpath:serviceApp/feature/Articles.feature@name=Create-new-and-delete
     enabled: true
     concurrency: low
     execution_time: low
+    response_time: medium
+    error_rate: low
+    throughput: medium
 
   - scenario: Get-10-articles
     feature: classpath:serviceApp/feature/HomePage.feature@name=Get-10-articles
     enabled: true
     concurrency: low
     execution_time: low
+    response_time: medium
+    error_rate: low
+    throughput: medium
 
   - scenario: Get-all-tags
     feature: classpath:serviceApp/feature/HomePage.feature@name=Get-all-tags
     enabled: true
     concurrency: low
     execution_time: low
+    response_time: medium
+    error_rate: low
+    throughput: medium
