@@ -26,3 +26,13 @@ throughput:
   low: 3
   medium: 5
   high: 15
+
+percentiles:
+  p95:
+    low: 2000
+    medium: 4000
+    high: 6000
+  p99:
+    low: 3000
+    medium: 6000
+    high: 9000

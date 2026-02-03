@@ -8,6 +8,9 @@ features:
     concurrency: low
     execution_time: low
     response_time: medium
+    percentiles:
+      p95: medium
+      p99: high
     error_rate: low
     throughput: medium
 
@@ -17,6 +20,9 @@ features:
     concurrency: low
     execution_time: low
     response_time: medium
+    percentiles:
+      p95: medium
+      p99: high
     error_rate: low
     throughput: medium
 
@@ -26,6 +32,9 @@ features:
     concurrency: low
     execution_time: low
     response_time: medium
+    percentiles:
+      p95: medium
+      p99: high
     error_rate: low
     throughput: medium
 
@@ -35,5 +44,8 @@ features:
     concurrency: low
     execution_time: low
     response_time: medium
+    percentiles:
+      p95: medium
+      p99: high
     error_rate: low
     throughput: medium

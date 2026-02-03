@@ -90,6 +90,31 @@ public class PerformanceYamlValidator {
                 parametricYaml,
                 prefix
         );
+
+        if (feature.containsKey("percentiles")) {
+        
+            Map<String, Object> percentiles =
+                    (Map<String, Object>) feature.get("percentiles");
+        
+            if (percentiles.containsKey("p95")) {
+                validateParametricValue(
+                    "p95",
+                    percentiles.get("p95").toString(),
+                    (Map<String, Object>) parametricYaml.get("percentiles"),
+                    prefix + ".percentiles"
+                );
+            }
+        
+            if (percentiles.containsKey("p99")) {
+                validateParametricValue(
+                    "p99",
+                    percentiles.get("p99").toString(),
+                    (Map<String, Object>) parametricYaml.get("percentiles"),
+                    prefix + ".percentiles"
+                );
+            }
+        }
+
     }
 
     /* -------------------------

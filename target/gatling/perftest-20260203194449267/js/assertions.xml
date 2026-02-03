@@ -1,4 +1,4 @@
-<testsuite name="performance.PerfTest" tests="3" errors="0" failures="0" time="0">
+<testsuite name="performance.PerfTest" tests="5" errors="0" failures="0" time="0">
   <testcase name="Global: max of response time is less than or equal to 5000.0" status="true" time="0">
   <system-out>Global: max of response time is less than or equal to 5000.0</system-out>
 </testcase>
@@ -7,5 +7,11 @@
 </testcase>
 <testcase name="Global: mean requests per second is greater than or equal to 5.0" status="true" time="0">
   <system-out>Global: mean requests per second is greater than or equal to 5.0</system-out>
+</testcase>
+<testcase name="Global: 95th percentile of response time is less than or equal to 4000.0" status="true" time="0">
+  <system-out>Global: 95th percentile of response time is less than or equal to 4000.0</system-out>
+</testcase>
+<testcase name="Global: 99th percentile of response time is less than or equal to 9000.0" status="true" time="0">
+  <system-out>Global: 99th percentile of response time is less than or equal to 9000.0</system-out>
 </testcase>
 </testsuite>

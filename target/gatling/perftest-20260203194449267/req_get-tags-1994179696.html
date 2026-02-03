@@ -17,7 +17,7 @@
 <script src="js/highcharts-more.js"></script>
 <script src="js/theme.js"></script>
 <script src="js/unpack.js"></script>
-<title>Gatling Stats - Post-Create-Token</title>
+<title>Gatling Stats - Get-Tags</title>
 </head>
 <body>
 <script>
@@ -202,7 +202,7 @@
     </div>
 </div>
 <script>
-    var pageStats = stats.contents['req_post-create-tok--920259115'].stats;
+    var pageStats = stats.contents['req_get-tags-1994179696'].stats;
     $(document).ready(function() {
         $('.simulation-tooltip').popover({trigger:'hover', placement:'left'});
         setDetailsLinkUrl();
@@ -331,7 +331,7 @@ var responsetimeDistributionChart = new Highcharts.Chart({
     maskInside: false
   },
   xAxis: {
-    categories: ['589'],
+    categories: ['505', '510', '513', '518', '526', '542', '543', '557', '559', '579'],
     tickInterval: 20
   },
   yAxis: {
@@ -359,7 +359,7 @@ type: 'column',
 color: '#68b65c',
 name: 'OK',
 data: [
-  100.0
+  10.0,10.0,10.0,10.0,10.0,10.0,10.0,10.0,10.0,10.0
 ],
 tooltip: { yDecimals: 0, ySuffix: 'ms' }
 },
@@ -380,7 +380,7 @@ responsetimeDistributionChart.setTitle({
   useHTML: true
 });
 
-var responsetimepercentilesovertimeokPercentiles = unpack([[1770146503,null],[1770146504,null],[1770146505,[589,589,589,589,589,589,589,589,589,589]],[1770146506,null],[1770146507,null],[1770146508,null],[1770146509,null],[1770146510,null],[1770146511,null],[1770146512,null],[1770146513,null]]);
+var responsetimepercentilesovertimeokPercentiles = unpack([[1770147890,null],[1770147891,null],[1770147892,null],[1770147893,null],[1770147894,null],[1770147895,null],[1770147896,null],[1770147897,null],[1770147898,[505,518,532,545,548,550,553,556,558,559]],[1770147899,[510,516,534,546,551,556,563,571,577,579]]]);
 
 var responsetimepercentilesovertimeokPercentilesChart = new Highcharts.StockChart({
   chart: {
@@ -577,7 +577,7 @@ responsetimepercentilesovertimeokPercentilesChart.setTitle({
   useHTML: true
 });
 
-var requests = unpack([[1770146503,[0,0,0]],[1770146504,[0,0,0]],[1770146505,[1,1,0]],[1770146506,[0,0,0]],[1770146507,[0,0,0]],[1770146508,[0,0,0]],[1770146509,[0,0,0]],[1770146510,[0,0,0]],[1770146511,[0,0,0]],[1770146512,[0,0,0]],[1770146513,[0,0,0]]]);
+var requests = unpack([[1770147890,[0,0,0]],[1770147891,[0,0,0]],[1770147892,[0,0,0]],[1770147893,[0,0,0]],[1770147894,[0,0,0]],[1770147895,[0,0,0]],[1770147896,[0,0,0]],[1770147897,[0,0,0]],[1770147898,[2,2,0]],[1770147899,[8,8,0]]]);
 
 var requestsChart = new Highcharts.StockChart({
   chart: {
@@ -688,7 +688,7 @@ requestsChart.setTitle({
   useHTML: true
 });
 
-var responses = unpack([[1770146503,[0,0,0]],[1770146504,[0,0,0]],[1770146505,[1,1,0]],[1770146506,[0,0,0]],[1770146507,[0,0,0]],[1770146508,[0,0,0]],[1770146509,[0,0,0]],[1770146510,[0,0,0]],[1770146511,[0,0,0]],[1770146512,[0,0,0]],[1770146513,[0,0,0]]]);
+var responses = unpack([[1770147890,[0,0,0]],[1770147891,[0,0,0]],[1770147892,[0,0,0]],[1770147893,[0,0,0]],[1770147894,[0,0,0]],[1770147895,[0,0,0]],[1770147896,[0,0,0]],[1770147897,[0,0,0]],[1770147898,[0,0,0]],[1770147899,[10,10,0]]]);
 
 var requestsChart = new Highcharts.StockChart({
   chart: {
@@ -808,7 +808,7 @@ tooltip: { yDecimals: 0, ySuffix: '', valueDecimals: 0 }
 type: 'pie',
 name: 'Distribution',
 data: [
-  {name: 'OK', y: 1.0, color: '#68b65c'},{name: 'KO', y: 0.0, color: '#f15b4f'}
+  {name: 'OK', y: 10.0, color: '#68b65c'},{name: 'KO', y: 0.0, color: '#f15b4f'}
 ],
 center: [775, -40],
 size: 70,
@@ -886,7 +886,7 @@ type: 'scatter',
 color: '#68b65c',
 name: 'OK',
 data: [
-[6,589]
+[7,556],[8,571]
 ]},
 	  {
 type: 'scatter',

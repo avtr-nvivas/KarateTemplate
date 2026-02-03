@@ -93,8 +93,23 @@ public class PerformanceConfig {
     private int resolveThroughput(String level) {
         Map<String, Object> throughput =
                 (Map<String, Object>) parametricYaml.get("throughput");
-    
+
         Number value = (Number) throughput.get(level);
+        return value.intValue();
+    }
+
+    @SuppressWarnings("unchecked")
+    private Integer resolvePercentile(
+            String percentile,
+            String level
+    ) {
+        Map<String, Object> percentiles =
+                (Map<String, Object>) parametricYaml.get("percentiles");
+
+        Map<String, Object> percentileLevels =
+                (Map<String, Object>) percentiles.get(percentile);
+
+        Number value = (Number) percentileLevels.get(level);
         return value.intValue();
     }
 
@@ -118,6 +133,22 @@ public class PerformanceConfig {
         config.maxResponseTimeMs = resolveResponseTime(responseLevel);
         config.maxErrorRatePercent = resolveErrorRate(errorRateLevel);
         config.minThroughputRps = resolveThroughput(throughputLevel);
+
+        if (feature.containsKey("percentiles")) {
+
+            Map<String, Object> percentiles =
+                    (Map<String, Object>) feature.get("percentiles");
+                
+            if (percentiles.containsKey("p95")) {
+                config.p95ResponseTimeMs =
+                        resolvePercentile("p95", percentiles.get("p95").toString());
+            }
+        
+            if (percentiles.containsKey("p99")) {
+                config.p99ResponseTimeMs =
+                        resolvePercentile("p99", percentiles.get("p99").toString());
+            }
+        }
 
         return config;
     }
@@ -155,6 +186,9 @@ public class PerformanceConfig {
         public int maxResponseTimeMs;
         public double maxErrorRatePercent;
         public int minThroughputRps;
+
+        public Integer p95ResponseTimeMs;
+        public Integer p99ResponseTimeMs;
     }
 
     public int maxResponseTimeMs;

@@ -48,15 +48,22 @@ class PerfTest extends Simulation {
     }
 
   val populationBuilders = populations
-  
+
   val assertions = config.features().asScala.flatMap { feature =>
     Seq(
       global.responseTime.max.lte(feature.maxResponseTimeMs),
       global.failedRequests.percent.lte(feature.maxErrorRatePercent),
       global.requestsPerSec.gte(feature.minThroughputRps)
-    )
+    ) ++
+    Option(feature.p95ResponseTimeMs).toSeq.map { p95 =>
+      global.responseTime.percentile(95).lte(p95)
+    } ++
+    Option(feature.p99ResponseTimeMs).toSeq.map { p99 =>
+      global.responseTime.percentile(99).lte(p99)
+    }
   }
-  
+
   setUp(populationBuilders: _*)
     .assertions(assertions.toSeq: _*)
+
 }
