@@ -1,0 +1,27 @@
+loadType: closed
+mode: sequence
+
+features:
+  - scenario: Home-Work
+    feature: classpath:serviceApp/feature/HomeWork.feature@name=Home-Work
+    enabled: true
+    concurrency: low
+    execution_time: low
+
+  - scenario: Create-new-and-delete
+    feature: classpath:serviceApp/feature/Articles.feature@name=Create-new-and-delete
+    enabled: true
+    concurrency: low
+    execution_time: low
+
+  - scenario: Get-10-articles
+    feature: classpath:serviceApp/feature/HomePage.feature@name=Get-10-articles
+    enabled: true
+    concurrency: low
+    execution_time: low
+
+  - scenario: Get-all-tags
+    feature: classpath:serviceApp/feature/HomePage.feature@name=Get-all-tags
+    enabled: true
+    concurrency: low
+    execution_time: low

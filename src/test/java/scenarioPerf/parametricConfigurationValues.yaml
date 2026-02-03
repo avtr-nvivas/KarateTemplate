@@ -1,0 +1,12 @@
+concurrency:
+  very_low: 2
+  low: 5
+  medium: 10
+  high: 15
+  very_high: 20
+
+execution_time:
+  low: 2
+  medium: 4
+  high: 6
+  very_high: 8
