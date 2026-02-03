@@ -17,7 +17,7 @@
 <script src="js/highcharts-more.js"></script>
 <script src="js/theme.js"></script>
 <script src="js/unpack.js"></script>
-<title>Gatling Stats - Post-Articles-ID-favorite</title>
+<title>Gatling Stats - Create-Article</title>
 </head>
 <body>
 <script>
@@ -189,8 +189,8 @@
 		<tbody>
 		    
 		    <tr>
-		    	<td class="error-col-1 total ko">serviceApp/feature/HomeWork.feature:86 match response.article.favoritesCount == favoritesCount + 1<span class="value" style="display:none">0</span></td>
-		    	<td class="value error-col-2 total ko">9</td>
+		    	<td class="error-col-1 total ko">serviceApp/feature/Articles.feature:24 status 201<span class="value" style="display:none">0</span></td>
+		    	<td class="value error-col-2 total ko">8</td>
 		    	<td class="value error-col-3 total ko">100 %</td>
 		    </tr>
 		</tbody>
@@ -224,7 +224,7 @@
     </div>
 </div>
 <script>
-    var pageStats = stats.contents['req_post-articles-i-137922955'].stats;
+    var pageStats = stats.contents['req_create-article-1905260837'].stats;
     $(document).ready(function() {
         $('.simulation-tooltip').popover({trigger:'hover', placement:'left'});
         setDetailsLinkUrl();
@@ -353,7 +353,7 @@ var responsetimeDistributionChart = new Highcharts.Chart({
     maskInside: false
   },
   xAxis: {
-    categories: ['450', '459', '467', '476', '484', '493', '501', '510', '518', '527', '535', '544', '552', '561', '569', '578', '586', '595', '603', '612', '620', '629', '637', '646', '654', '663', '672', '680', '689', '697', '706', '714', '723', '731', '740', '748', '757', '765', '774', '782', '791', '799', '808', '816', '825', '833', '842', '850', '859', '867', '876', '884', '893', '901', '910', '918', '927', '935', '944', '952', '961', '969', '978', '986', '995', '1003', '1012', '1020', '1029', '1037', '1046', '1054', '1063', '1071', '1080', '1089', '1097', '1106', '1114', '1123', '1131', '1140', '1148', '1157', '1165', '1174', '1182', '1191', '1199', '1208', '1216', '1225', '1233', '1242', '1250', '1259', '1267', '1276', '1284', '1293'],
+    categories: ['460', '488'],
     tickInterval: 20
   },
   yAxis: {
@@ -381,7 +381,7 @@ type: 'column',
 color: '#68b65c',
 name: 'OK',
 data: [
-  0.0,10.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0
+  10.0,10.0
 ],
 tooltip: { yDecimals: 0, ySuffix: 'ms' }
 },
@@ -390,7 +390,7 @@ type: 'column',
 color: '#f15b4f',
 name: 'KO',
 data: [
-  20.0,10.0,0.0,10.0,0.0,10.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,10.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,10.0,0.0,0.0,10.0,0.0,10.0
+  20.0,10.0,30.0,10.0,10.0
 ],
 tooltip: { yDecimals: 0, ySuffix: 'ms' }
 }
@@ -402,7 +402,7 @@ responsetimeDistributionChart.setTitle({
   useHTML: true
 });
 
-var responsetimepercentilesovertimeokPercentiles = unpack([[1770144004,null],[1770144005,null],[1770144006,null],[1770144007,[456,456,456,456,456,456,456,456,456,456]],[1770144008,null],[1770144009,null],[1770144010,null],[1770144011,null],[1770144012,null],[1770144013,null],[1770144014,null],[1770144015,null]]);
+var responsetimepercentilesovertimeokPercentiles = unpack([[1770146503,null],[1770146504,null],[1770146505,null],[1770146506,null],[1770146507,null],[1770146508,[488,488,488,488,488,488,488,488,488,488]],[1770146509,[460,460,460,460,460,460,460,460,460,460]],[1770146510,null],[1770146511,null],[1770146512,null],[1770146513,null]]);
 
 var responsetimepercentilesovertimeokPercentilesChart = new Highcharts.StockChart({
   chart: {
@@ -599,7 +599,7 @@ responsetimepercentilesovertimeokPercentilesChart.setTitle({
   useHTML: true
 });
 
-var requests = unpack([[1770144004,[0,0,0]],[1770144005,[0,0,0]],[1770144006,[0,0,0]],[1770144007,[3,1,2]],[1770144008,[3,0,3]],[1770144009,[3,0,3]],[1770144010,[1,0,1]],[1770144011,[0,0,0]],[1770144012,[0,0,0]],[1770144013,[0,0,0]],[1770144014,[0,0,0]],[1770144015,[0,0,0]]]);
+var requests = unpack([[1770146503,[0,0,0]],[1770146504,[0,0,0]],[1770146505,[0,0,0]],[1770146506,[0,0,0]],[1770146507,[0,0,0]],[1770146508,[2,1,1]],[1770146509,[8,1,7]],[1770146510,[0,0,0]],[1770146511,[0,0,0]],[1770146512,[0,0,0]],[1770146513,[0,0,0]]]);
 
 var requestsChart = new Highcharts.StockChart({
   chart: {
@@ -710,7 +710,7 @@ requestsChart.setTitle({
   useHTML: true
 });
 
-var responses = unpack([[1770144004,[0,0,0]],[1770144005,[0,0,0]],[1770144006,[0,0,0]],[1770144007,[0,0,0]],[1770144008,[4,1,3]],[1770144009,[3,0,3]],[1770144010,[3,0,3]],[1770144011,[0,0,0]],[1770144012,[0,0,0]],[1770144013,[0,0,0]],[1770144014,[0,0,0]],[1770144015,[0,0,0]]]);
+var responses = unpack([[1770146503,[0,0,0]],[1770146504,[0,0,0]],[1770146505,[0,0,0]],[1770146506,[0,0,0]],[1770146507,[0,0,0]],[1770146508,[0,0,0]],[1770146509,[7,2,5]],[1770146510,[3,0,3]],[1770146511,[0,0,0]],[1770146512,[0,0,0]],[1770146513,[0,0,0]]]);
 
 var requestsChart = new Highcharts.StockChart({
   chart: {
@@ -830,7 +830,7 @@ tooltip: { yDecimals: 0, ySuffix: '', valueDecimals: 0 }
 type: 'pie',
 name: 'Distribution',
 data: [
-  {name: 'OK', y: 1.0, color: '#68b65c'},{name: 'KO', y: 9.0, color: '#f15b4f'}
+  {name: 'OK', y: 2.0, color: '#68b65c'},{name: 'KO', y: 8.0, color: '#f15b4f'}
 ],
 center: [775, -40],
 size: 70,
@@ -908,14 +908,14 @@ type: 'scatter',
 color: '#68b65c',
 name: 'OK',
 data: [
-[3,456]
+[8,488],[11,460]
 ]},
 	  {
 type: 'scatter',
 color: '#f15b4f',
 name: 'KO',
 data: [
-[3,1236],[6,620],[8,1292],[11,456]
+[8,434],[11,450]
 ]}
 	]
 });

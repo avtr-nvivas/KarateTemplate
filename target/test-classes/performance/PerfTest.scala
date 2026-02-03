@@ -47,5 +47,16 @@ class PerfTest extends Simulation {
       }.toSeq
     }
 
-  setUp(populations: _*)
+  val populationBuilders = populations
+  
+  val assertions = config.features().asScala.flatMap { feature =>
+    Seq(
+      global.responseTime.max.lte(feature.maxResponseTimeMs),
+      global.failedRequests.percent.lte(feature.maxErrorRatePercent),
+      global.requestsPerSec.gte(feature.minThroughputRps)
+    )
+  }
+  
+  setUp(populationBuilders: _*)
+    .assertions(assertions.toSeq: _*)
 }

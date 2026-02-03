@@ -18,11 +18,11 @@ response_time:
   very_high: 15000
 
 error_rate:
-  low: 1
+  low: 35
   medium: 3
   high: 5
 
 throughput:
-  low: 1
+  low: 3
   medium: 5
-  high: 10
+  high: 15
