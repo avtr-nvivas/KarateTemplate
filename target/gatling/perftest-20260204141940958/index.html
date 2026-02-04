@@ -70,14 +70,7 @@
           <div class="content-in">
             <div class="container-article">
             <div class="article">
-              <div class="alert-danger">
-  You are using Gatling 3.11.5
- released on 2024-06-30, more than 1 year ago.
-
-  Please check the <a href="https://gatling.io/docs/gatling/reference/current/whats_new">new features</a>,
-  the <a href="https://gatling.io/docs/gatling/reference/current/upgrading/">upgrade guides</a>,
-  and consider upgrading.
-</div>
+              
               
 <div class="schema-container">
 
@@ -104,11 +97,11 @@
     <div class="simulation-information-container">
       <span class="simulation-information-item">
         <span class="simulation-information-label">Date: </span>
-        <span>2026-02-03 19:44:50 GMT</span>
+        <span>2026-02-04 14:19:42 GMT</span>
       </span>
       <span class="simulation-information-item">
         <span class="simulation-information-label">Duration: </span>
-        <span>9s </span>
+        <span>11s </span>
       </span>
       <span class="simulation-information-item">
         <span class="simulation-information-label">Description: </span>
@@ -147,11 +140,11 @@
   <td class="error-col-2 value ok total">OK</td>
 </tr>
 <tr>
-  <td class="error-col-1 ok total">
+  <td class="error-col-1 ko total">
     Global: mean requests per second is greater than or equal to 5.0
     <span class="value" style="display:none">2</span>
   </td>
-  <td class="error-col-2 value ok total">OK</td>
+  <td class="error-col-2 value ko total">KO</td>
 </tr>
 <tr>
   <td class="error-col-1 ok total">
@@ -164,6 +157,41 @@
   <td class="error-col-1 ok total">
     Global: 99th percentile of response time is less than or equal to 9000.0
     <span class="value" style="display:none">4</span>
+  </td>
+  <td class="error-col-2 value ok total">OK</td>
+</tr>
+<tr>
+  <td class="error-col-1 ok total">
+    Get-Articles: percentage of failed events is less than or equal to 35.0
+    <span class="value" style="display:none">5</span>
+  </td>
+  <td class="error-col-2 value ok total">OK</td>
+</tr>
+<tr>
+  <td class="error-col-1 ko total">
+    Post-Articles-ID-favorite: percentage of failed events is less than or equal to 35.0
+    <span class="value" style="display:none">6</span>
+  </td>
+  <td class="error-col-2 value ko total">KO</td>
+</tr>
+<tr>
+  <td class="error-col-1 ko total">
+    Create-Article: percentage of failed events is less than or equal to 35.0
+    <span class="value" style="display:none">7</span>
+  </td>
+  <td class="error-col-2 value ko total">KO</td>
+</tr>
+<tr>
+  <td class="error-col-1 ok total">
+    Delete-Article: percentage of failed events is less than or equal to 35.0
+    <span class="value" style="display:none">8</span>
+  </td>
+  <td class="error-col-2 value ok total">OK</td>
+</tr>
+<tr>
+  <td class="error-col-1 ok total">
+    Get-Tags: percentage of failed events is less than or equal to 35.0
+    <span class="value" style="display:none">9</span>
   </td>
   <td class="error-col-2 value ok total">OK</td>
 </tr>
@@ -269,14 +297,14 @@ function closeStatisticsTableModal () {
 		<tbody>
 		    
 		    <tr>
-		    	<td class="error-col-1 total ko">serviceApp/feature/Articles.feature:24 status 201<span class="value" style="display:none">0</span></td>
-		    	<td class="value error-col-2 total ko">8</td>
-		    	<td class="value error-col-3 total ko">50 %</td>
+		    	<td class="error-col-1 total ko">serviceApp/feature/HomeWork.feature:86 match response.article.favoritesCount == favoritesCount + 1<span class="value" style="display:none">0</span></td>
+		    	<td class="value error-col-2 total ko">9</td>
+		    	<td class="value error-col-3 total ko">60 %</td>
 		    </tr>
 		    <tr>
-		    	<td class="error-col-1 total ko">serviceApp/feature/HomeWork.feature:86 match response.article.favoritesCount == favoritesCount + 1<span class="value" style="display:none">1</span></td>
-		    	<td class="value error-col-2 total ko">8</td>
-		    	<td class="value error-col-3 total ko">50 %</td>
+		    	<td class="error-col-1 total ko">serviceApp/feature/Articles.feature:24 status 201<span class="value" style="display:none">1</span></td>
+		    	<td class="value error-col-2 total ko">6</td>
+		    	<td class="value error-col-3 total ko">40 %</td>
 		    </tr>
 		</tbody>
     </table>
@@ -664,7 +692,7 @@ var allUsersChart = new Highcharts.StockChart({
 color: '#5E7BE2',
 name: 'Sequence-Flow',
 data: [
-  [1770147890000,5],[1770147891000,5],[1770147892000,5],[1770147893000,5],[1770147894000,5],[1770147895000,5],[1770147896000,5],[1770147897000,5],[1770147898000,5],[1770147899000,5]
+  [1770214782000,5],[1770214783000,5],[1770214784000,5],[1770214785000,5],[1770214786000,5],[1770214787000,5],[1770214788000,5],[1770214789000,5],[1770214790000,5],[1770214791000,5],[1770214792000,4],[1770214793000,1]
 ],
 tooltip: { yDecimals: 0, ySuffix: '', valueDecimals: 0 }},
 
@@ -700,7 +728,7 @@ var responsetimeDistributionChart = new Highcharts.Chart({
     maskInside: false
   },
   xAxis: {
-    categories: ['420', '429', '438', '447', '456', '466', '475', '484', '493', '503', '512', '521', '530', '539', '549', '558', '567', '576', '586', '595', '604', '613', '622', '632', '641', '650', '659', '669', '678', '687', '696', '705', '715', '724', '733', '742', '752', '761', '770', '779', '788', '798', '807', '816', '825', '835', '844', '853', '862', '871', '881', '890', '899', '908', '917', '927', '936', '945', '954', '964', '973', '982', '991', '1000', '1010', '1019', '1028', '1037', '1047', '1056', '1065', '1074', '1083', '1093', '1102', '1111', '1120', '1130', '1139', '1148', '1157', '1166', '1176', '1185', '1194', '1203', '1213', '1222', '1231', '1240', '1249', '1259', '1268', '1277', '1286', '1296', '1305', '1314', '1323', '1332'],
+    categories: ['419', '430', '442', '453', '464', '476', '487', '499', '510', '522', '533', '545', '556', '567', '579', '590', '602', '613', '625', '636', '648', '659', '670', '682', '693', '705', '716', '728', '739', '750', '762', '773', '785', '796', '808', '819', '831', '842', '853', '865', '876', '888', '899', '911', '922', '934', '945', '956', '968', '979', '991', '1002', '1014', '1025', '1036', '1048', '1059', '1071', '1082', '1094', '1105', '1117', '1128', '1139', '1151', '1162', '1174', '1185', '1197', '1208', '1220', '1231', '1242', '1254', '1265', '1277', '1288', '1300', '1311', '1322', '1334', '1345', '1357', '1368', '1380', '1391', '1403', '1414', '1425', '1437', '1448', '1460', '1471', '1483', '1494', '1506', '1517', '1528', '1540', '1551'],
     tickInterval: 20
   },
   yAxis: {
@@ -728,7 +756,7 @@ type: 'column',
 color: '#68b65c',
 name: 'OK',
 data: [
-  0.0,0.0,0.0,3.63,1.81,0.0,0.0,0.0,1.81,5.45,3.63,1.81,1.81,3.63,1.81,3.63,1.81,3.63,0.0,3.63,0.0,0.0,0.0,0.0,3.63,1.81,0.0,1.81,1.81,1.81,1.81,0.0,0.0,0.0,0.0,1.81,0.0,1.81,0.0,0.0,0.0,0.0,1.81,0.0,0.0,0.0,1.81,0.0,1.81,0.0,0.0,0.0,0.0,0.0,1.81,0.0,0.0,0.0,0.0,1.81,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,1.81,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,1.81,0.0,0.0,0.0,0.0,0.0,1.81,1.81
+  0.0,0.0,0.0,5.35,1.78,1.78,1.78,3.57,3.57,0.0,1.78,1.78,0.0,3.57,1.78,7.14,1.78,3.57,0.0,3.57,0.0,0.0,0.0,5.35,1.78,0.0,0.0,1.78,0.0,1.78,0.0,3.57,0.0,0.0,0.0,0.0,0.0,0.0,3.57,1.78,1.78,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,1.78,0.0,0.0,0.0,0.0,1.78,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,1.78,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,1.78,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,1.78
 ],
 tooltip: { yDecimals: 0, ySuffix: 'ms' }
 },
@@ -737,7 +765,7 @@ type: 'column',
 color: '#f15b4f',
 name: 'KO',
 data: [
-  1.81,1.81,7.27,3.63,3.63,1.81,0.0,0.0,1.81,1.81,0.0,0.0,1.81,0.0,0.0,0.0,1.81,0.0,0.0,0.0,0.0,1.81,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0
+  3.57,1.78,3.57,7.14,3.57,0.0,0.0,1.78,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,3.57,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,1.78,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0
 ],
 tooltip: { yDecimals: 0, ySuffix: 'ms' }
 }
@@ -749,7 +777,7 @@ responsetimeDistributionChart.setTitle({
   useHTML: true
 });
 
-var responsetimepercentilesovertimeokPercentiles = unpack([[1770147890,null],[1770147891,null],[1770147892,[914,914,914,914,914,914,914,914,914,914]],[1770147893,[575,743,1039,1274,1327,1329,1332,1334,1336,1337]],[1770147894,[504,527,551,910,981,1053,1125,1197,1254,1269]],[1770147895,[744,793,829,851,853,855,857,859,861,862]],[1770147896,[449,449,449,469,473,477,481,485,488,489]],[1770147897,[452,534,597,618,629,637,639,640,641,642]],[1770147898,[505,606,681,689,692,700,719,738,753,757]],[1770147899,[510,516,534,546,551,556,563,571,577,579]]]);
+var responsetimepercentilesovertimeokPercentiles = unpack([[1770214782,null],[1770214783,null],[1770214784,[678,678,678,678,678,678,678,678,678,678]],[1770214785,[865,981,1177,1392,1425,1458,1491,1524,1550,1557]],[1770214786,[604,623,643,662,666,670,674,678,681,682]],[1770214787,[771,779,851,851,856,861,867,872,876,878]],[1770214788,[461,461,461,461,461,461,461,461,461,461]],[1770214789,[449,456,581,655,696,726,734,742,749,751]],[1770214790,[493,622,641,689,691,727,831,935,1019,1040]],[1770214791,[471,509,557,584,589,590,591,592,593,594]],[1770214792,[502,508,570,591,595,599,603,607,610,611]],[1770214793,[513,517,521,525,526,527,528,529,529,530]]]);
 
 var responsetimepercentilesovertimeokPercentilesChart = new Highcharts.StockChart({
   chart: {
@@ -946,7 +974,7 @@ responsetimepercentilesovertimeokPercentilesChart.setTitle({
   useHTML: true
 });
 
-var requests = unpack([[1770147890,[0,0,0]],[1770147891,[0,0,0]],[1770147892,[1,1,0]],[1770147893,[6,6,0]],[1770147894,[7,3,4]],[1770147895,[5,4,1]],[1770147896,[10,3,7]],[1770147897,[11,7,4]],[1770147898,[7,7,0]],[1770147899,[8,8,0]]]);
+var requests = unpack([[1770214782,[0,0,0]],[1770214783,[0,0,0]],[1770214784,[1,1,0]],[1770214785,[5,5,0]],[1770214786,[5,2,3]],[1770214787,[7,5,2]],[1770214788,[7,1,6]],[1770214789,[11,7,4]],[1770214790,[7,7,0]],[1770214791,[6,6,0]],[1770214792,[5,5,0]],[1770214793,[2,2,0]]]);
 
 var requestsChart = new Highcharts.StockChart({
   chart: {
@@ -1057,7 +1085,7 @@ requestsChart.setTitle({
   useHTML: true
 });
 
-var responses = unpack([[1770147890,[0,0,0]],[1770147891,[0,0,0]],[1770147892,[0,0,0]],[1770147893,[2,2,0]],[1770147894,[7,5,2]],[1770147895,[6,4,2]],[1770147896,[10,5,5]],[1770147897,[10,3,7]],[1770147898,[7,7,0]],[1770147899,[13,13,0]]]);
+var responses = unpack([[1770214782,[0,0,0]],[1770214783,[0,0,0]],[1770214784,[0,0,0]],[1770214785,[1,1,0]],[1770214786,[7,6,1]],[1770214787,[5,2,3]],[1770214788,[8,4,4]],[1770214789,[10,3,7]],[1770214790,[7,7,0]],[1770214791,[6,6,0]],[1770214792,[9,9,0]],[1770214793,[3,3,0]]]);
 
 var requestsChart = new Highcharts.StockChart({
   chart: {
@@ -1177,7 +1205,7 @@ tooltip: { yDecimals: 0, ySuffix: '', valueDecimals: 0 }
 type: 'pie',
 name: 'Distribution',
 data: [
-  {name: 'OK', y: 39.0, color: '#68b65c'},{name: 'KO', y: 16.0, color: '#f15b4f'}
+  {name: 'OK', y: 41.0, color: '#68b65c'},{name: 'KO', y: 15.0, color: '#f15b4f'}
 ],
 center: [775, -40],
 size: 70,

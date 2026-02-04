@@ -15,10 +15,12 @@ class PerfTest extends Simulation {
 
   val features = config.features().asScala
 
+  // -------------------------------
+  // Population builders
+  // -------------------------------
   val populations =
     if (config.mode() == "sequence") {
 
-      // 🔹 SEQUENCE MODE: one scenario, chained features
       val chainedScenario =
         features.foldLeft(
           scenario("Sequence-Flow")
@@ -36,7 +38,6 @@ class PerfTest extends Simulation {
 
     } else {
 
-      // 🔹 PARALLEL MODE: one scenario per feature
       features.map { feature =>
         scenario(feature.scenario)
           .repeat(feature.executions) {
@@ -47,23 +48,32 @@ class PerfTest extends Simulation {
       }.toSeq
     }
 
-  val populationBuilders = populations
+  // -------------------------------
+  // Assertions
+  // -------------------------------
+  val globalAssertions = Seq(
+    global.responseTime.max.lte(config.globalMaxResponseTimeMs()),
+    global.failedRequests.percent.lte(config.globalMaxErrorRatePercent()),
+    global.requestsPerSec.gte(config.globalMinThroughputRps()),
+    global.responseTime.percentile(95).lte(config.globalP95Ms()),
+    global.responseTime.percentile(99).lte(config.globalP99Ms())
+  )
 
-  val assertions = config.features().asScala.flatMap { feature =>
-    Seq(
-      global.responseTime.max.lte(feature.maxResponseTimeMs),
-      global.failedRequests.percent.lte(feature.maxErrorRatePercent),
-      global.requestsPerSec.gte(feature.minThroughputRps)
-    ) ++
-    Option(feature.p95ResponseTimeMs).toSeq.map { p95 =>
-      global.responseTime.percentile(95).lte(p95)
-    } ++
-    Option(feature.p99ResponseTimeMs).toSeq.map { p99 =>
-      global.responseTime.percentile(99).lte(p99)
+  val featureAssertions =
+    features.flatMap { feature =>
+      Option(feature.requests)
+        .map(_.asScala)
+        .getOrElse(Seq.empty)
+        .map { reqName =>
+          details(reqName)
+            .failedRequests.percent
+            .lte(feature.maxErrorRatePercent)
+        }
     }
-  }
 
-  setUp(populationBuilders: _*)
-    .assertions(assertions.toSeq: _*)
-
+  // -------------------------------
+  // Setup
+  // -------------------------------
+  setUp(populations: _*)
+    .assertions((globalAssertions ++ featureAssertions).toSeq: _*)
 }

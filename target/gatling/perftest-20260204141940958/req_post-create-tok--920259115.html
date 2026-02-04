@@ -17,7 +17,7 @@
 <script src="js/highcharts-more.js"></script>
 <script src="js/theme.js"></script>
 <script src="js/unpack.js"></script>
-<title>Gatling Stats - Get-Tags</title>
+<title>Gatling Stats - Post-Create-Token</title>
 </head>
 <body>
 <script>
@@ -70,14 +70,7 @@
           <div class="content-in">
             <div class="container-article">
             <div class="article">
-              <div class="alert-danger">
-  You are using Gatling 3.11.5
- released on 2024-06-30, more than 1 year ago.
-
-  Please check the <a href="https://gatling.io/docs/gatling/reference/current/whats_new">new features</a>,
-  the <a href="https://gatling.io/docs/gatling/reference/current/upgrading/">upgrade guides</a>,
-  and consider upgrading.
-</div>
+              
               
 <div class="schema-container">
 
@@ -202,7 +195,7 @@
     </div>
 </div>
 <script>
-    var pageStats = stats.contents['req_get-tags-1994179696'].stats;
+    var pageStats = stats.contents['req_post-create-tok--920259115'].stats;
     $(document).ready(function() {
         $('.simulation-tooltip').popover({trigger:'hover', placement:'left'});
         setDetailsLinkUrl();
@@ -331,7 +324,7 @@ var responsetimeDistributionChart = new Highcharts.Chart({
     maskInside: false
   },
   xAxis: {
-    categories: ['505', '510', '513', '518', '526', '542', '543', '557', '559', '579'],
+    categories: ['678'],
     tickInterval: 20
   },
   yAxis: {
@@ -359,7 +352,7 @@ type: 'column',
 color: '#68b65c',
 name: 'OK',
 data: [
-  10.0,10.0,10.0,10.0,10.0,10.0,10.0,10.0,10.0,10.0
+  100.0
 ],
 tooltip: { yDecimals: 0, ySuffix: 'ms' }
 },
@@ -380,7 +373,7 @@ responsetimeDistributionChart.setTitle({
   useHTML: true
 });
 
-var responsetimepercentilesovertimeokPercentiles = unpack([[1770147890,null],[1770147891,null],[1770147892,null],[1770147893,null],[1770147894,null],[1770147895,null],[1770147896,null],[1770147897,null],[1770147898,[505,518,532,545,548,550,553,556,558,559]],[1770147899,[510,516,534,546,551,556,563,571,577,579]]]);
+var responsetimepercentilesovertimeokPercentiles = unpack([[1770214782,null],[1770214783,null],[1770214784,[678,678,678,678,678,678,678,678,678,678]],[1770214785,null],[1770214786,null],[1770214787,null],[1770214788,null],[1770214789,null],[1770214790,null],[1770214791,null],[1770214792,null],[1770214793,null]]);
 
 var responsetimepercentilesovertimeokPercentilesChart = new Highcharts.StockChart({
   chart: {
@@ -577,7 +570,7 @@ responsetimepercentilesovertimeokPercentilesChart.setTitle({
   useHTML: true
 });
 
-var requests = unpack([[1770147890,[0,0,0]],[1770147891,[0,0,0]],[1770147892,[0,0,0]],[1770147893,[0,0,0]],[1770147894,[0,0,0]],[1770147895,[0,0,0]],[1770147896,[0,0,0]],[1770147897,[0,0,0]],[1770147898,[2,2,0]],[1770147899,[8,8,0]]]);
+var requests = unpack([[1770214782,[0,0,0]],[1770214783,[0,0,0]],[1770214784,[1,1,0]],[1770214785,[0,0,0]],[1770214786,[0,0,0]],[1770214787,[0,0,0]],[1770214788,[0,0,0]],[1770214789,[0,0,0]],[1770214790,[0,0,0]],[1770214791,[0,0,0]],[1770214792,[0,0,0]],[1770214793,[0,0,0]]]);
 
 var requestsChart = new Highcharts.StockChart({
   chart: {
@@ -688,7 +681,7 @@ requestsChart.setTitle({
   useHTML: true
 });
 
-var responses = unpack([[1770147890,[0,0,0]],[1770147891,[0,0,0]],[1770147892,[0,0,0]],[1770147893,[0,0,0]],[1770147894,[0,0,0]],[1770147895,[0,0,0]],[1770147896,[0,0,0]],[1770147897,[0,0,0]],[1770147898,[0,0,0]],[1770147899,[10,10,0]]]);
+var responses = unpack([[1770214782,[0,0,0]],[1770214783,[0,0,0]],[1770214784,[0,0,0]],[1770214785,[1,1,0]],[1770214786,[0,0,0]],[1770214787,[0,0,0]],[1770214788,[0,0,0]],[1770214789,[0,0,0]],[1770214790,[0,0,0]],[1770214791,[0,0,0]],[1770214792,[0,0,0]],[1770214793,[0,0,0]]]);
 
 var requestsChart = new Highcharts.StockChart({
   chart: {
@@ -808,7 +801,7 @@ tooltip: { yDecimals: 0, ySuffix: '', valueDecimals: 0 }
 type: 'pie',
 name: 'Distribution',
 data: [
-  {name: 'OK', y: 10.0, color: '#68b65c'},{name: 'KO', y: 0.0, color: '#f15b4f'}
+  {name: 'OK', y: 1.0, color: '#68b65c'},{name: 'KO', y: 0.0, color: '#f15b4f'}
 ],
 center: [775, -40],
 size: 70,
@@ -886,7 +879,7 @@ type: 'scatter',
 color: '#68b65c',
 name: 'OK',
 data: [
-[7,556],[8,571]
+[1,678]
 ]},
 	  {
 type: 'scatter',

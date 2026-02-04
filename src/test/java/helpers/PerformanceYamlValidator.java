@@ -49,6 +49,7 @@ public class PerformanceYamlValidator {
         requireKey(feature, "response_time", prefix);
         requireKey(feature, "error_rate", prefix);
         requireKey(feature, "throughput", prefix);
+        requireKey(feature, "requests", prefix);
 
         if (!(feature.get("enabled") instanceof Boolean)) {
             throw new IllegalArgumentException(
@@ -115,6 +116,13 @@ public class PerformanceYamlValidator {
             }
         }
 
+        if (!(feature.get("requests") instanceof List) ||
+            ((List<?>) feature.get("requests")).isEmpty()) {
+            throw new IllegalArgumentException(
+                prefix + ": 'requests' must be a non-empty list"
+            );
+        }
+        
     }
 
     /* -------------------------

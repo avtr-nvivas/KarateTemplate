@@ -112,42 +112,48 @@ public class PerformanceConfig {
         Number value = (Number) percentileLevels.get(level);
         return value.intValue();
     }
-
+    
     private FeatureConfig mapToFeatureConfig(Map<String, Object> feature) {
 
-        String responseLevel = feature.get("response_time").toString();
-        String errorRateLevel = feature.get("error_rate").toString();
-        String throughputLevel = feature.get("throughput").toString();
-        
         FeatureConfig config = new FeatureConfig();
 
         config.scenario = feature.get("scenario").toString();
         config.featurePath = feature.get("feature").toString();
 
+        // 🔐 BLINDAJE CRÍTICO
+        config.requests = List.of();   // <-- SIEMPRE inicializado
+
+        // Carga
         String concurrencyLevel = feature.get("concurrency").toString();
         String executionLevel = feature.get("execution_time").toString();
 
         config.concurrentUsers = resolveConcurrency(concurrencyLevel);
         config.executions = resolveExecutionCount(executionLevel);
-        
-        config.maxResponseTimeMs = resolveResponseTime(responseLevel);
-        config.maxErrorRatePercent = resolveErrorRate(errorRateLevel);
-        config.minThroughputRps = resolveThroughput(throughputLevel);
 
+        // SLA
+        config.maxResponseTimeMs = resolveResponseTime(feature.get("response_time").toString());
+        config.maxErrorRatePercent = resolveErrorRate(feature.get("error_rate").toString());
+        config.minThroughputRps = resolveThroughput(feature.get("throughput").toString());
+
+        // Percentiles (opcional)
         if (feature.containsKey("percentiles")) {
-
             Map<String, Object> percentiles =
                     (Map<String, Object>) feature.get("percentiles");
-                
+
             if (percentiles.containsKey("p95")) {
                 config.p95ResponseTimeMs =
                         resolvePercentile("p95", percentiles.get("p95").toString());
             }
-        
+
             if (percentiles.containsKey("p99")) {
                 config.p99ResponseTimeMs =
                         resolvePercentile("p99", percentiles.get("p99").toString());
             }
+        }
+
+        // Requests (solo si existen en YAML)
+        if (feature.containsKey("requests")) {
+            config.requests = (List<String>) feature.get("requests");
         }
 
         return config;
@@ -178,6 +184,9 @@ public class PerformanceConfig {
         public String scenario;
         public String featurePath;
 
+        // Requests que componen el feature
+        public List<String> requests;
+
         // Carga
         public int concurrentUsers;
         public int executions;
@@ -186,12 +195,53 @@ public class PerformanceConfig {
         public int maxResponseTimeMs;
         public double maxErrorRatePercent;
         public int minThroughputRps;
-
         public Integer p95ResponseTimeMs;
         public Integer p99ResponseTimeMs;
-    }
+    } 
 
-    public int maxResponseTimeMs;
+     public int maxResponseTimeMs;
     
+    /* ---------------------------
+       Global SLA (derived)
+     --------------------------- */
     
+    public int globalMaxResponseTimeMs() {
+        return features().stream()
+                .mapToInt(f -> f.maxResponseTimeMs)
+                .max()
+                .orElseThrow(() ->
+                        new IllegalStateException("No features enabled"));
+    }
+    
+    public double globalMaxErrorRatePercent() {
+        return features().stream()
+                .mapToDouble(f -> f.maxErrorRatePercent)
+                .max()
+                .orElseThrow(() ->
+                        new IllegalStateException("No features enabled"));
+    }
+    
+    public int globalMinThroughputRps() {
+        return features().stream()
+                .mapToInt(f -> f.minThroughputRps)
+                .min()
+                .orElseThrow(() ->
+                        new IllegalStateException("No features enabled"));
+    }
+    
+    public int globalP95Ms() {
+        return features().stream()
+                .filter(f -> f.p95ResponseTimeMs != null)
+                .mapToInt(f -> f.p95ResponseTimeMs)
+                .max()
+                .orElse(Integer.MAX_VALUE);
+    }
+    
+    public int globalP99Ms() {
+        return features().stream()
+                .filter(f -> f.p99ResponseTimeMs != null)
+                .mapToInt(f -> f.p99ResponseTimeMs)
+                .max()
+                .orElse(Integer.MAX_VALUE);
+    }
 }
